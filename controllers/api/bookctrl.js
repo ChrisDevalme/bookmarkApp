@@ -2,13 +2,13 @@ const Bookmark = require('../../models/Bookmark')
 
 
 module.exports = {
-    jsonBookmark,
-    jsonBookmarks,
     create,
     index,
     show,
     update,
     destroy,
+    jsonBookmark,
+    jsonBookmarks       
 }
 
 // jsonBookmarks jsonBookmark

@@ -2,8 +2,8 @@ const { model, Schema } = require('mongoose')
 
 
 const bookmarkSchema = new Schema ({
-    title: { required: true, type: String },
-    url: { required: true, type: Boolean }
+    title: String ,
+    url: String 
 }, {
     timestamps: true
 })
