@@ -1,7 +1,7 @@
 import styles from './BookmarkList.module.scss'
+
 import Bookmark from '../Bookmark/Bookmark'
 import { Link } from "react-router-dom";
-import UpdateBookmark from '../Pages/UpdateBookmark'
 
  
 export default function BookmarkList ({ 
@@ -13,12 +13,15 @@ export default function BookmarkList ({
     deleteBookmark
 }){
     return(
-        <div>
-            Add a New Bookmark: <br/>
-            Press Enter to store!
+        <div className={styles.bookmarklist}>
+            <h1 className='mb-n1'>Add a New Bookmark</h1> <br/>
+            <h2 className='mt-2'>Press Enter to store</h2>
+            
+            <div className="input-group mb-3">
+            <span className="input-group-text" id="inputGroup-sizing-default">Title</span>
             <input 
+            className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
             placeholder='Website' 
-            className={styles.input}
             type="text" 
             value={newBookmark.title} 
             onChange={(e) => {
@@ -28,9 +31,14 @@ export default function BookmarkList ({
                 e.key === 'Enter' && createBookmark()
             }}
             />
+            </div>
+
+            <div className="input-group mb-3">
+            <span className="input-group-text" id="inputGroup-sizing-default">URL</span>
             <input 
+            className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
             placeholder='http://'
-            className={styles.input}
+            // className={styles.input}
             type="text" 
             value={newBookmark.url} 
             onChange={(e) => {
@@ -40,9 +48,11 @@ export default function BookmarkList ({
                 e.key === 'Enter' && createBookmark()
             }}
             />
-             <h3>Bookmarks</h3>
+            </div>
+             <h3 className='mt-5'>Bookmark List:</h3>
         {bookmarks.map(bookmark => (
             <>
+            <div className='fs-4 d-flex'>
             <Bookmark
                 key={bookmark._id} 
                 bookmark={bookmark}
@@ -51,7 +61,8 @@ export default function BookmarkList ({
                 buttonAction2={updateBookmark}
                 buttonText2={'edit'}
             />
-            <Link to={`/updateBookmark/${bookmark._id}`}>update</Link>
+            {/* <button className='btn btn-warning inline'><Link className='text-decoration-none' to={`/updateBookmark/${bookmark._id}`}>Update</Link></button> */}
+            </div>
             </>
         ))}
         </div>

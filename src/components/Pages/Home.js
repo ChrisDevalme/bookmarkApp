@@ -88,7 +88,9 @@ export default function App(){
             <div className={styles.banner}>
                 <h1>BOOKMARKS</h1>
             </div>
-            <BookmarkList
+            <div className='card'>
+                <div className='card-body'>
+                <BookmarkList
             newBookmark={newBookmark}
             setNewBookmark={setNewBookmark}
             createBookmark={createBookmark}
@@ -96,6 +98,8 @@ export default function App(){
             bookmarks={bookmarks}
             deleteBookmark={deleteBookmark}
             />
+                </div>
+            </div>
             
         </>
     )

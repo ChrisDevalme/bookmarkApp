@@ -1,4 +1,4 @@
-import styles from '../../components/Bookmark/Bookmark.module.scss'
+import styles from './UpdateBookmark.module.scss'
 // import UpdateBookmark from './UpdateBookmark'
 import {useState, useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
@@ -41,40 +41,47 @@ export default function UpdateBookmark(){
 
     const loaded = () => {
         return (
-          <div>
-            <h1>
+          <div className='card text-center w-200' style={{width: "550px"}}>
+            <h1 className='card-header'>
               {bookmark.title}
             </h1>
-            <h2>{bookmark.url}</h2>
-            Press Enter to save!
-            <input 
-            placeholder='Website' 
-            className={styles.input}
-            type="text" 
-            value={bookmark.title} 
-            onChange={(e) => {
-                setBookmark({...bookmark, title: e.target.value})
-            }} 
-            onKeyDown={(e) => {
-                e.key === 'Enter' && updateBookmark()
-            }}
-            />
-            <input 
-            placeholder='http://'
-            className={styles.input}
-            type="text" 
-            value={bookmark.url} 
-            onChange={(e) => {
-                setBookmark({...bookmark, url: e.target.value})
-            }} 
-            onKeyDown={(e) => {
-                e.key === 'Enter' && updateBookmark()
-            }}
+            <div className='card-body'>
+                <h4 className='card-text'>Press Enter to save</h4>
+                <div className="input-group mb-3">
+                <span className="input-group-text" id="inputGroup-sizing-default">Title</span>
+                    <input 
+                    placeholder='Website' 
+                    className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                    type="text" 
+                    value={bookmark.title} 
+                    onChange={(e) => {
+                        setBookmark({...bookmark, title: e.target.value})
+                    }} 
+                    onKeyDown={(e) => {
+                        e.key === 'Enter' && updateBookmark()
+                    }}
+                    />
+                </div>
+                <div className="input-group mb-3">
+                <span className="input-group-text" id="inputGroup-sizing-default">URL</span>
+                <input 
+                placeholder='http://'
+                className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                type="text" 
+                value={bookmark.url} 
+                onChange={(e) => {
+                    setBookmark({...bookmark, url: e.target.value})
+                }} 
+                onKeyDown={(e) => {
+                    e.key === 'Enter' && updateBookmark()
+                }}
 
-            
-            /><br/>
-            <Link to='/'>Home</Link>
-
+                
+                />
+                </div>
+                <br/>
+                <Link className='btn btn-primary text-center' to='/'>Home</Link>
+            </div>
 
           </div>
           

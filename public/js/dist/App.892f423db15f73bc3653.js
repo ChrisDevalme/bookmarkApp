@@ -49,6 +49,7 @@ function App() {
 /* harmony export */   "default": () => (/* binding */ Bookmark)
 /* harmony export */ });
 /* harmony import */ var _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Bookmark.module.scss */ "./src/components/Bookmark/Bookmark.module.scss");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 // import UpdateBookmark from './UpdateBookmark'
@@ -62,17 +63,26 @@ function Bookmark(_ref) {
     buttonText2
   } = _ref;
   return /*#__PURE__*/React.createElement("div", {
-    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].bookmark
+    className: "w-100 d-flex justify-content-between mb-1 border border-2 border-start-0 rounded-end"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: ""
   }, /*#__PURE__*/React.createElement("a", {
+    className: "text-decoration-none",
     href: "https://".concat(bookmark.url),
     target: "_blank"
-  }, bookmark.title), /*#__PURE__*/React.createElement("button", {
-    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].button,
+  }, bookmark.title)), /*#__PURE__*/React.createElement("div", {
+    className: "btn-group inline-block"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "buton",
+    className: "btn btn-danger ",
     onClick: () => buttonAction(bookmark._id)
   }, buttonText), /*#__PURE__*/React.createElement("button", {
-    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].button,
-    onClick: () => buttonAction2(bookmark._id)
-  }, buttonText2));
+    type: "button",
+    className: "btn btn-primary"
+  }, /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    className: "text-decoration-none text-white",
+    to: "/updateBookmark/".concat(bookmark._id)
+  }, "Update"))));
 }
 
 /***/ }),
@@ -88,15 +98,12 @@ function Bookmark(_ref) {
 /* harmony export */ });
 /* harmony import */ var _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookmarkList.module.scss */ "./src/components/BookmarkList/BookmarkList.module.scss");
 /* harmony import */ var _Bookmark_Bookmark__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Bookmark/Bookmark */ "./src/components/Bookmark/Bookmark.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var _Pages_UpdateBookmark__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Pages/UpdateBookmark */ "./src/components/Pages/UpdateBookmark.js");
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
 function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
 
 
 
@@ -109,9 +116,22 @@ function BookmarkList(_ref) {
     updateBookmark,
     deleteBookmark
   } = _ref;
-  return /*#__PURE__*/React.createElement("div", null, "Add a New Bookmark: ", /*#__PURE__*/React.createElement("br", null), "Press Enter to store!", /*#__PURE__*/React.createElement("input", {
+  return /*#__PURE__*/React.createElement("div", {
+    className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].bookmarklist
+  }, /*#__PURE__*/React.createElement("h1", {
+    className: "mb-n1"
+  }, "Add a New Bookmark"), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", {
+    className: "mt-2"
+  }, "Press Enter to store"), /*#__PURE__*/React.createElement("div", {
+    className: "input-group mb-3"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "input-group-text",
+    id: "inputGroup-sizing-default"
+  }, "Title"), /*#__PURE__*/React.createElement("input", {
+    className: "form-control",
+    "aria-label": "Sizing example input",
+    "aria-describedby": "inputGroup-sizing-default",
     placeholder: "Website",
-    className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input,
     type: "text",
     value: newBookmark.title,
     onChange: e => {
@@ -122,9 +142,18 @@ function BookmarkList(_ref) {
     onKeyDown: e => {
       e.key === 'Enter' && createBookmark();
     }
-  }), /*#__PURE__*/React.createElement("input", {
-    placeholder: "http://",
-    className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input,
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "input-group mb-3"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "input-group-text",
+    id: "inputGroup-sizing-default"
+  }, "URL"), /*#__PURE__*/React.createElement("input", {
+    className: "form-control",
+    "aria-label": "Sizing example input",
+    "aria-describedby": "inputGroup-sizing-default",
+    placeholder: "http://"
+    // className={styles.input}
+    ,
     type: "text",
     value: newBookmark.url,
     onChange: e => {
@@ -135,16 +164,18 @@ function BookmarkList(_ref) {
     onKeyDown: e => {
       e.key === 'Enter' && createBookmark();
     }
-  }), /*#__PURE__*/React.createElement("h3", null, "Bookmarks"), bookmarks.map(bookmark => /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Bookmark_Bookmark__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  })), /*#__PURE__*/React.createElement("h3", {
+    className: "mt-5"
+  }, "Bookmark List:"), bookmarks.map(bookmark => /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "fs-4 d-flex"
+  }, /*#__PURE__*/React.createElement(_Bookmark_Bookmark__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: bookmark._id,
     bookmark: bookmark,
     buttonAction: deleteBookmark,
     buttonText: 'Delete',
     buttonAction2: updateBookmark,
     buttonText2: 'edit'
-  }), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    to: "/updateBookmark/".concat(bookmark._id)
-  }, "update"))));
+  })))));
 }
 
 /***/ }),
@@ -250,14 +281,18 @@ function App() {
   }, []);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: _app_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].banner
-  }, /*#__PURE__*/React.createElement("h1", null, "BOOKMARKS")), /*#__PURE__*/React.createElement(_BookmarkList_BookmarkList__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, /*#__PURE__*/React.createElement("h1", null, "BOOKMARKS")), /*#__PURE__*/React.createElement("div", {
+    className: "card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "card-body"
+  }, /*#__PURE__*/React.createElement(_BookmarkList_BookmarkList__WEBPACK_IMPORTED_MODULE_1__["default"], {
     newBookmark: newBookmark,
     setNewBookmark: setNewBookmark,
     createBookmark: createBookmark,
     updateBookmark: updateBookmark,
     bookmarks: bookmarks,
     deleteBookmark: deleteBookmark
-  }));
+  }))));
 }
 
 /***/ }),
@@ -271,7 +306,7 @@ function App() {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ UpdateBookmark)
 /* harmony export */ });
-/* harmony import */ var _components_Bookmark_Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/Bookmark/Bookmark.module.scss */ "./src/components/Bookmark/Bookmark.module.scss");
+/* harmony import */ var _UpdateBookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateBookmark.module.scss */ "./src/components/Pages/UpdateBookmark.module.scss");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
@@ -316,9 +351,27 @@ function UpdateBookmark() {
     getBookmark();
   }, []);
   const loaded = () => {
-    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, bookmark.title), /*#__PURE__*/React.createElement("h2", null, bookmark.url), "Press Enter to save!", /*#__PURE__*/React.createElement("input", {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "card text-center w-200",
+      style: {
+        width: "550px"
+      }
+    }, /*#__PURE__*/React.createElement("h1", {
+      className: "card-header"
+    }, bookmark.title), /*#__PURE__*/React.createElement("div", {
+      className: "card-body"
+    }, /*#__PURE__*/React.createElement("h4", {
+      className: "card-text"
+    }, "Press Enter to save"), /*#__PURE__*/React.createElement("div", {
+      className: "input-group mb-3"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "input-group-text",
+      id: "inputGroup-sizing-default"
+    }, "Title"), /*#__PURE__*/React.createElement("input", {
       placeholder: "Website",
-      className: _components_Bookmark_Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input,
+      className: "form-control",
+      "aria-label": "Sizing example input",
+      "aria-describedby": "inputGroup-sizing-default",
       type: "text",
       value: bookmark.title,
       onChange: e => {
@@ -329,9 +382,16 @@ function UpdateBookmark() {
       onKeyDown: e => {
         e.key === 'Enter' && updateBookmark();
       }
-    }), /*#__PURE__*/React.createElement("input", {
+    })), /*#__PURE__*/React.createElement("div", {
+      className: "input-group mb-3"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "input-group-text",
+      id: "inputGroup-sizing-default"
+    }, "URL"), /*#__PURE__*/React.createElement("input", {
       placeholder: "http://",
-      className: _components_Bookmark_Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input,
+      className: "form-control",
+      "aria-label": "Sizing example input",
+      "aria-describedby": "inputGroup-sizing-default",
       type: "text",
       value: bookmark.url,
       onChange: e => {
@@ -342,9 +402,10 @@ function UpdateBookmark() {
       onKeyDown: e => {
         e.key === 'Enter' && updateBookmark();
       }
-    }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      className: "btn btn-primary text-center",
       to: "/"
-    }, "Home"));
+    }, "Home")));
   };
   const loading = () => {
     return /*#__PURE__*/React.createElement("h1", null, "Loading...");
@@ -370,6 +431,7 @@ function UpdateBookmark() {
 
 
 
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(document.getElementById("app"));
 root.render( /*#__PURE__*/React.createElement(react__WEBPACK_IMPORTED_MODULE_0__.StrictMode, null, /*#__PURE__*/React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.BrowserRouter, null, /*#__PURE__*/React.createElement(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
 
@@ -394,7 +456,7 @@ root.render( /*#__PURE__*/React.createElement(react__WEBPACK_IMPORTED_MODULE_0__
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `body {
-  margin: 0;
+  margin-top: 100px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -404,21 +466,18 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
 
 .KTmxx2sH00E53HXHCND1 {
   width: 100%;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: rgb(195, 65, 65);
-}
-.KTmxx2sH00E53HXHCND1 img {
-  width: 50%;
-  max-height: 300px;
+  background-color: rgb(7, 95, 184);
 }
 .KTmxx2sH00E53HXHCND1 h1 {
   width: 100%;
   text-align: center;
-  color: rgba(23, 5, 58, 0.8);
-}`, "",{"version":3,"sources":["webpack://./src/App.module.scss"],"names":[],"mappings":"AAAA;EACI,SAAA;EACA,iBAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;AACJ;;AAEA;EACI,WAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,sBAAA;EACA,kCAAA;AACJ;AAAI;EACI,UAAA;EACA,iBAAA;AAER;AAAI;EACI,WAAA;EACA,kBAAA;EACA,2BAAA;AAER","sourcesContent":["body {\n    margin: 0;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    background-color: white;\n}\n\n.banner{\n    width: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    background-color:  rgb(195, 65, 65);\n    img {\n        width: 50%;\n        max-height: 300px;\n    }\n    h1 {\n        width: 100%;\n        text-align: center;\n        color: rgba(23,5, 58, 0.8);\n    }\n}\n"],"sourceRoot":""}]);
+  color: rgb(255, 255, 255);
+}`, "",{"version":3,"sources":["webpack://./src/App.module.scss"],"names":[],"mappings":"AAAA;EACI,iBAAA;EACA,iBAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;AACJ;;AAEA;EACI,WAAA;EACA,aAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,sBAAA;EACA,iCAAA;AACJ;AACI;EACI,WAAA;EACA,kBAAA;EACA,yBAAA;AACR","sourcesContent":["body {\n    margin-top: 100px;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    background-color: white;\n}\n\n.banner{\n    width: 100%;\n    height: 100px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    background-color:  rgb(7, 95, 184);\n\n    h1 {\n        width: 100%;\n        text-align: center;\n        color: rgb(255, 255, 255);\n    }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"banner": `KTmxx2sH00E53HXHCND1`
@@ -447,7 +506,7 @@ ___CSS_LOADER_EXPORT___.locals = {
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `body {
-  margin: 0;
+  margin-top: 100px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -457,21 +516,18 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
 
 .NW0aj2yFNJVtzQSGxDZw {
   width: 100%;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: rgb(195, 65, 65);
-}
-.NW0aj2yFNJVtzQSGxDZw img {
-  width: 50%;
-  max-height: 300px;
+  background-color: rgb(7, 95, 184);
 }
 .NW0aj2yFNJVtzQSGxDZw h1 {
   width: 100%;
   text-align: center;
-  color: rgba(23, 5, 58, 0.8);
-}`, "",{"version":3,"sources":["webpack://./src/app.module.scss"],"names":[],"mappings":"AAAA;EACI,SAAA;EACA,iBAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;AACJ;;AAEA;EACI,WAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,sBAAA;EACA,kCAAA;AACJ;AAAI;EACI,UAAA;EACA,iBAAA;AAER;AAAI;EACI,WAAA;EACA,kBAAA;EACA,2BAAA;AAER","sourcesContent":["body {\n    margin: 0;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    background-color: white;\n}\n\n.banner{\n    width: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    background-color:  rgb(195, 65, 65);\n    img {\n        width: 50%;\n        max-height: 300px;\n    }\n    h1 {\n        width: 100%;\n        text-align: center;\n        color: rgba(23,5, 58, 0.8);\n    }\n}\n"],"sourceRoot":""}]);
+  color: rgb(255, 255, 255);
+}`, "",{"version":3,"sources":["webpack://./src/app.module.scss"],"names":[],"mappings":"AAAA;EACI,iBAAA;EACA,iBAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;AACJ;;AAEA;EACI,WAAA;EACA,aAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,sBAAA;EACA,iCAAA;AACJ;AACI;EACI,WAAA;EACA,kBAAA;EACA,yBAAA;AACR","sourcesContent":["body {\n    margin-top: 100px;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    background-color: white;\n}\n\n.banner{\n    width: 100%;\n    height: 100px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    background-color:  rgb(7, 95, 184);\n\n    h1 {\n        width: 100%;\n        text-align: center;\n        color: rgb(255, 255, 255);\n    }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"banner": `NW0aj2yFNJVtzQSGxDZw`
@@ -546,30 +602,52 @@ ___CSS_LOADER_EXPORT___.locals = {
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `.Y9rNf4f3lleHsoKVWRIg {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  color: rgba(23, 5, 58, 0.8);
-  border-radius: 9px;
-  border: 1px solid rgba(23, 5, 58, 0.1);
-  padding: 2rem;
-  box-shadow: 2px 4px 8px rgba(23, 5, 58, 0.5);
+  width: 450px;
 }
-.Y9rNf4f3lleHsoKVWRIg .xqIdbaiF17DoAye5kkLw {
-  color: rgba(89, 15, 230, 0.8);
-  display: inline-block;
-  font-size: 2.5rem;
-  height: 3.5rem;
-  margin: 1rem;
-  border: 0;
-  background-color: aliceblue;
-}`, "",{"version":3,"sources":["webpack://./src/components/BookmarkList/BookmarkList.module.scss"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,2BAAA;EACA,kBAAA;EACA,sCAAA;EACA,aAAA;EACA,4CAAA;AACJ;AAAI;EACI,6BAAA;EACA,qBAAA;EACA,iBAAA;EACA,cAAA;EACA,YAAA;EACA,SAAA;EACA,2BAAA;AAER","sourcesContent":[".bookmarklist {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    font-size: 2rem;\n    color: rgba(23,5, 58, 0.8);\n    border-radius: 9px;\n    border: 1px solid rgba(23,5, 58, 0.1);\n    padding: 2rem;\n    box-shadow: 2px 4px 8px rgba(23,5, 58, 0.5);\n    .input {\n        color:rgba(89, 15, 230, 0.8);\n        display: inline-block;\n        font-size: 2.5rem;\n        height: 3.5rem;\n        margin: 1rem;\n        border: 0;\n        background-color:aliceblue;\n    }\n}"],"sourceRoot":""}]);
+.Y9rNf4f3lleHsoKVWRIg h1 {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: -1em;
+}
+.Y9rNf4f3lleHsoKVWRIg h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 30px;
+  color: gray;
+}`, "",{"version":3,"sources":["webpack://./src/components/BookmarkList/BookmarkList.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;AACJ;AACI;EACI,kBAAA;EACA,gBAAA;EACA,mBAAA;AACR;AAEI;EACI,kBAAA;EACA,mBAAA;EACA,eAAA;EACA,WAAA;AAAR","sourcesContent":[".bookmarklist {\n    width: 450px;\n\n    h1 {\n        text-align: center;\n        margin-top: 10px;\n        margin-bottom: -1em;\n    }\n\n    h2{\n        text-align: center;\n        margin-bottom: 50px;\n        font-size: 30px;\n        color: gray;\n    }\n    \n}\n\n\n\n\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
-	"bookmarklist": `Y9rNf4f3lleHsoKVWRIg`,
-	"input": `xqIdbaiF17DoAye5kkLw`
+	"bookmarklist": `Y9rNf4f3lleHsoKVWRIg`
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/components/Pages/UpdateBookmark.module.scss":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/components/Pages/UpdateBookmark.module.scss ***!
+  \************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `.p5HvXZ3Mgioeip_dCaEw {
+  width: 80px;
+}`, "",{"version":3,"sources":["webpack://./src/components/Pages/UpdateBookmark.module.scss"],"names":[],"mappings":"AAAA;EACI,WAAA;AACJ","sourcesContent":[".updatecard {\n    width: 80px;\n}"],"sourceRoot":""}]);
+// Exports
+___CSS_LOADER_EXPORT___.locals = {
+	"updatecard": `p5HvXZ3Mgioeip_dCaEw`
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -683,11 +761,8 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /*!******************************************************!*\
   !*** ./src/components/Bookmark/Bookmark.module.scss ***!
   \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
@@ -727,7 +802,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 
-       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+       /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
@@ -781,6 +856,56 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
+/***/ "./src/components/Pages/UpdateBookmark.module.scss":
+/*!*********************************************************!*\
+  !*** ./src/components/Pages/UpdateBookmark.module.scss ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
+
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_UpdateBookmark_module_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!../../../node_modules/sass-loader/dist/cjs.js!../../../node_modules/postcss-loader/dist/cjs.js!./UpdateBookmark.module.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/components/Pages/UpdateBookmark.module.scss");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_UpdateBookmark_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_UpdateBookmark_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_UpdateBookmark_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_UpdateBookmark_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ })
@@ -997,4 +1122,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.970a82055ca26f75e00d6b55cc8e4c75.js.map
+//# sourceMappingURL=App.dacbdaf74c9f9afb9bff00df6ac02dbc.js.map
