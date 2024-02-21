@@ -14,6 +14,8 @@ app.use(logger('dev'))
 app.use(favicon(path.join(__dirname, 'public', 'img','logo.png')))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/api/bookRoutes', require('./routes/api/bookRoutes'))
+app.use('/api/userRoutes', require('./routes/api/userRoutes'))
+
 
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'))
